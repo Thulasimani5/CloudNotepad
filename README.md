@@ -32,7 +32,7 @@ CloudNotepad (SPNotz) is a cloud-native rich text notepad and document managemen
 
 ## Screenshots / Demo
 
-![CloudNotepad Application Demo](https://raw.githubusercontent.com/Nithishkumarsp03/CloudIntegrated-Notepad/main/frontend/public/preview.png)
+
 
 ---
 
