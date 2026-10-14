@@ -13,7 +13,7 @@ CloudNotepad (SPNotz) is a cloud-native rich text notepad and document managemen
 - **What the project does:** Provides a comprehensive WYSIWYG editing environment powered by TipTap, enabling users to create, style, organize, categorize, export (PDF, Word, Excel), and publicly share rich documents.
 - **What problem it solves:** Eliminates the risk of unsaved work and cumbersome document exports. Traditional text editors either lack cloud persistence or overwhelm users with bloat; CloudNotepad delivers high responsiveness, debounced auto-saving, and multi-format document generation in a sleek UI.
 - **Who it is for:** Students, software engineers, writers, and professionals who need a fast, distraction-free document editor with reliable multi-device cloud synchronization.
-- **What makes your implementation interesting:** Custom debounced synchronization pipeline that eliminates edit conflicts and redundant network requests, coupled with serverless PostgreSQL connection pooling, multi-format document templating engines (Docxtemplater, PizZip, jsPDF), and optional Two-Factor Authentication (2FA) via email OTP.
+- **What makes my implementation interesting:** Custom debounced synchronization pipeline that eliminates edit conflicts and redundant network requests, coupled with serverless PostgreSQL connection pooling, multi-format document templating engines (Docxtemplater, PizZip, jsPDF), and optional Two-Factor Authentication (2FA) via email OTP.
 
 ---
 
