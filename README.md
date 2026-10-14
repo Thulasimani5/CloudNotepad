@@ -371,4 +371,4 @@ All rights reserved. Unauthorized copying, modification, distribution, or use of
 
 **Thulasimani**
 
-[GitHub](https://github.com/Thulasimani5) · [LinkedIn](https://www.linkedin.com/in/thulasimani-d-3a55382b4/)
+[GitHub](https://github.com/Thulasimani5) · [LinkedIn](https://www.linkedin.com/in/thulasimani-d-3a55382b4/)  · [Portfolio](#) · [Email](thulasi3st@gmail.com)
