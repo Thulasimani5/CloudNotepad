@@ -2,7 +2,7 @@
 
 «A modern, cloud-integrated rich-text notepad and document workspace engineered for seamless auto-saving, multi-format document exporting, and enterprise-grade two-factor authentication.»
 
-[Live Demo](https://spnotz.vercel.app/) · [GitHub](https://github.com/Thulasimani5/CloudNotepad) · [API Docs](https://api-spnotz.vercel.app) 
+[Live Demo](https://spnotz.vercel.app/) · [GitHub](https://github.com/Thulasimani5/CloudNotepad) · [API Docs](#api-documentation)
 
 ---
 
