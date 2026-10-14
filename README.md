@@ -2,7 +2,7 @@
 
 «A modern, cloud-integrated rich-text notepad and document workspace engineered for seamless auto-saving, multi-format document exporting, and enterprise-grade two-factor authentication.»
 
-[Live Demo](https://cloud-integrated-notepad.vercel.app) · [GitHub](https://github.com/Thulasimani5/CloudNotepad) · [API Docs](https://api-spnotz.vercel.app) · [Demo Video](https://github.com/Thulasimani5/CloudNotepad)
+[Live Demo](https://spnotz.vercel.app/) · [GitHub](https://github.com/Thulasimani5/CloudNotepad) · [API Docs](https://api-spnotz.vercel.app) 
 
 ---
 
@@ -74,24 +74,70 @@ CloudNotepad (SPNotz) is a cloud-native rich text notepad and document managemen
 ## Architecture
 
 ```mermaid
-graph TD
-    Client["Client: React 19 + TipTap + Zustand"]
-    Router["Express v5 API Gateway (/notepad/v1/api)"]
-    AuthModule["Auth & 2FA Controller"]
-    NotesModule["Notes & Summary Controller"]
-    ExportModule["Document Export (DOCX/PDF/XLSX)"]
-    DB[("PostgreSQL (Neon DB)")]
-    MailService["Nodemailer (Gmail SMTP)"]
+flowchart TB
 
-    Client -->|HTTPS REST Requests + JWT| Router
-    Router --> AuthModule
-    Router --> NotesModule
-    Router --> ExportModule
+    USER(["USER"])
 
-    AuthModule -->|Verify / Store Users & OTP| DB
-    AuthModule -->|Send OTP & Reset Tokens| MailService
-    NotesModule -->|CRUD Notes & Details| DB
-    ExportModule -->|Generate File Buffers| Client
+    subgraph FRONTEND["1. FRONTEND CLIENT — React 19 + Tailwind CSS"]
+        direction LR
+        UI["UI Components<br/>TipTap Editor • Toolbar<br/>Sidebar • Modals"]
+        STATE["Zustand State Management<br/>Login • Editor • Notes • Categories"]
+        AUTOSAVE["Auto-Save Engine<br/>500ms Debounce"]
+        STORAGE["Secure Browser Storage<br/>JWT Token"]
+        PDF["PDF Export<br/>html2canvas + jsPDF"]
+
+        UI <--> STATE
+        STATE --> AUTOSAVE
+        STATE <--> STORAGE
+        UI --> PDF
+    end
+
+    subgraph GATEWAY["2. API GATEWAY — Vercel"]
+        direction LR
+        CORS["CORS Validation"]
+        PARSER["JSON Body Parser"]
+        JWT["JWT Middleware"]
+        ROUTER["API Router<br/>/notepad/v1/api"]
+
+        CORS --> PARSER --> JWT --> ROUTER
+    end
+
+    subgraph BACKEND["3. BACKEND SERVICES — Node.js + Express v5"]
+        direction LR
+        AUTH["Authentication Service<br/>Signup • Login • 2FA<br/>Password Reset"]
+        NOTES["Notes Operations<br/>Create • Rename • Delete<br/>Category Management"]
+        CONTENT["Note Content Service<br/>Autosave • Retrieval"]
+        EXPORT["Export & Sharing Service<br/>DOCX • XLSX • Public Links"]
+    end
+
+    subgraph DATA["4. DATABASE & EXTERNAL SERVICES"]
+        direction LR
+        DB[("Neon PostgreSQL<br/>login • notes<br/>note_details • otp_tokens")]
+        EMAIL["Gmail SMTP / Nodemailer<br/>OTP • Password Reset Emails"]
+    end
+
+    USER --> UI
+    STATE <-->|HTTPS / REST + JWT| CORS
+    ROUTER --> AUTH
+    ROUTER --> NOTES
+    ROUTER --> CONTENT
+    ROUTER --> EXPORT
+
+    AUTH <--> DB
+    NOTES <--> DB
+    CONTENT <--> DB
+    EXPORT <--> DB
+    AUTH --> EMAIL
+
+    classDef frontend fill:#E8F0FE,stroke:#4285F4,color:#174EA6,stroke-width:1.5px
+    classDef gateway fill:#FFF4D6,stroke:#E3A008,color:#7A4B00,stroke-width:1.5px
+    classDef backend fill:#F3E8FF,stroke:#9333EA,color:#581C87,stroke-width:1.5px
+    classDef data fill:#DDF7E8,stroke:#16A34A,color:#166534,stroke-width:1.5px
+
+    class UI,STATE,AUTOSAVE,STORAGE,PDF frontend
+    class CORS,PARSER,JWT,ROUTER gateway
+    class AUTH,NOTES,CONTENT,EXPORT backend
+    class DB,EMAIL data
 ```
 
 ### Architecture Data Flow:
@@ -306,16 +352,18 @@ npm test -- --watchAll=false
 
 ## Future Improvements
 
-- [ ] Real-time collaborative note editing with WebSockets and CRDTs (Yjs)
-- [ ] End-to-end client-side encryption (E2EE) for confidential notes
-- [ ] Offline-first Progressive Web App (PWA) with background sync via IndexedDB
-- [ ] Full-text fuzzy search and semantic tag-based note indexing
+- [ ] **Creator Publishing & Rights Promotion:** Allow writers to publish blogs, poems, and *kavithaigal* with administrative assistance in securing intellectual property rights, promoting creator content, and driving organic reach across curated community channels and pages.
+- [ ] **AI-Assisted Writing Suite:** Intelligent AI companion for real-time text expansion, grammar refinement, creative suggestions, summarization, and rhyme/meter suggestions for poetry and creative literature.
+- [ ] **Offline-First Progressive Web App (PWA):** Full offline document editing with automatic background data synchronization via IndexedDB upon reconnection.
+- [ ] **Real-Time Collaborative Editing:** Multi-user concurrent editing powered by WebSockets and conflict-free replicated data types (CRDTs / Yjs).
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+Proprietary License
+
+All rights reserved. Unauthorized copying, modification, distribution, or use of this software, via any medium, is strictly prohibited without explicit prior written permission from the copyright holder.
 
 ---
 
