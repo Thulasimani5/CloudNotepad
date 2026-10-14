@@ -323,4 +323,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 **Thulasimani**
 
-[GitHub](https://github.com/Thulasimani5) · [LinkedIn](https://www.linkedin.com/in/)
+[GitHub](https://github.com/Thulasimani5) · [LinkedIn](https://www.linkedin.com/in/thulasimani-d-3a55382b4/)
